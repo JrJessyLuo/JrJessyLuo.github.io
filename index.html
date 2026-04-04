@@ -169,6 +169,68 @@
       line-height: 1.75;
     }
 
+    /* Selected Publications style */
+    .pub-list {
+      margin-top: 28px;
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: start;
+    }
+
+    .pub-item:first-child {
+      padding-top: 0;
+    }
+
+    .pub-item:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .pub-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid #d9d9d9;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: #555;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .pub-title {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .pub-authors {
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    .pub-venue {
+      font-size: 0.97rem;
+      color: #666;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    .pub-links {
+      margin-top: 10px;
+    }
+
+    .pub-links a {
+      display: inline-block;
+      margin-right: 14px;
+      font-size: 0.95rem;
+    }
+
     .footer {
       background: var(--footer-bg);
       color: var(--footer-text);
@@ -214,39 +276,17 @@
       }
 
       .pub-list {
-        margin-top: 10px;
+        margin-top: 16px;
       }
-      
+
       .pub-item {
-        display: flex;
-        gap: 16px;
-        margin-bottom: 20px;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 18px 0;
       }
-      
+
       .pub-badge {
-        background: #eee;
-        padding: 6px 10px;
-        border-radius: 6px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        height: fit-content;
-      }
-      
-      .pub-title {
-        font-weight: 600;
-      }
-      
-      .pub-authors {
-        font-size: 0.95rem;
-      }
-      
-      .pub-venue {
-        font-size: 0.9rem;
-        color: var(--text-light);
-      }
-      
-      .pub-links a {
-        font-size: 0.9rem;
+        width: fit-content;
       }
     }
   </style>
@@ -302,18 +342,16 @@
       </div>
     </section>
 
-    <!-- About selected publications -->
+    <!-- Selected Publications -->
     <section class="card about-card">
       <h2>Selected Publications</h2>
-    
+
       <section class="pub-list">
-    
+
         <div class="pub-item">
           <div class="pub-badge">ICDE’26</div>
           <div>
-            <div class="pub-title">
-              Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering
-            </div>
+            <div class="pub-title">Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering</div>
             <div class="pub-authors">
               <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, and Shazia Sadiq
             </div>
@@ -323,13 +361,11 @@
             </div>
           </div>
         </div>
-    
+
         <div class="pub-item">
           <div class="pub-badge">VLDBJ’26</div>
           <div>
-            <div class="pub-title">
-              Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach
-            </div>
+            <div class="pub-title">Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach</div>
             <div class="pub-authors">
               <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, and Xiaoli Wang
             </div>
@@ -339,10 +375,9 @@
             </div>
           </div>
         </div>
-    
+
       </section>
     </section>
-  </main>
 
   </main>
 
