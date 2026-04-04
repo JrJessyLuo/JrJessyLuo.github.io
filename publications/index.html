@@ -2,62 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Publications - Feng Luo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Publications | Feng Luo</title>
+  <meta name="author" content="Feng Luo">
+  <meta name="description" content="Publications of Feng Luo.">
+  <meta name="keywords" content="Feng Luo, publications">
+  <link rel="canonical" href="https://jrjessyluo.github.io/publications/">
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
 
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --text-light: #6f6f6f;
+      --theme: #2698ba;
+      --divider: rgba(0, 0, 0, 0.12);
+      --footer-bg: #1c1c1d;
+      --footer-text: #e8e8e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      background: #f8f9fb;
-      color: #222;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      font-size: 2.2em;
-      margin-bottom: 10px;
-    }
-
-    .nav {
-      margin-bottom: 20px;
-    }
-
-    .nav a {
-      margin-right: 20px;
-      font-weight: bold;
-      color: #1a73e8;
-      text-decoration: none;
-    }
-
-    .nav a:hover {
-      text-decoration: underline;
-    }
-
-    .pub {
-      margin-bottom: 25px;
-    }
-
-    .title {
-      font-weight: bold;
-    }
-
-    .authors {
-      color: #444;
-    }
-
-    .venue {
-      color: #666;
-      font-style: italic;
+      padding-top: 72px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
     }
 
     a {
-      color: #1a73e8;
+      color: var(--theme);
       text-decoration: none;
     }
 
@@ -65,61 +44,237 @@
       text-decoration: underline;
     }
 
-    footer {
-      margin-top: 40px;
-      color: #777;
-      font-size: 0.9em;
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .social a:hover {
+      color: var(--theme);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .nav-links a.active {
+      color: var(--theme);
+      font-weight: 600;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .page-header {
+      text-align: left;
+      margin-bottom: 24px;
+    }
+
+    .page-title {
+      margin: 0 0 8px 0;
+      font-size: 2.6rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .page-desc {
+      color: var(--text-light);
+      margin: 0;
+    }
+
+    .pub-list {
+      margin-top: 28px;
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: start;
+    }
+
+    .pub-badge {
+      display: inline-block;
+      padding: 4px 10px;
+      border: 1px solid #d9d9d9;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: #555;
+      white-space: nowrap;
+      text-align: center;
+    }
+
+    .pub-title {
+      font-size: 1.08rem;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+
+    .pub-authors {
+      font-size: 0.98rem;
+      color: #444;
+    }
+
+    .pub-venue {
+      font-size: 0.97rem;
+      color: #666;
+      font-style: italic;
+      margin-top: 6px;
+    }
+
+    .pub-links {
+      margin-top: 10px;
+    }
+
+    .pub-links a {
+      display: inline-block;
+      margin-right: 14px;
+      font-size: 0.95rem;
+    }
+
+    .footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 18px 20px;
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .page-title {
+        font-size: 2.1rem;
+      }
+
+      .pub-item {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .pub-badge {
+        width: fit-content;
+      }
     }
   </style>
 </head>
 
 <body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="social">
+        <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+        <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+      </div>
 
-<div class="container">
-
-  <!-- Navigation -->
-  <div class="nav">
-    <a href="/">About</a>
-    <a href="/publications/">Publications</a>
-  </div>
-
-  <h1>Publications</h1>
-
-  <p>A selected list of my publications is below.</p>
-
-  <!-- Paper 1 -->
-  <div class="pub">
-    <div class="title">
-      Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering
+      <div class="nav-links">
+        <a href="https://jrjessyluo.github.io/">About</a>
+        <a class="active" href="https://jrjessyluo.github.io/publications/">Publications</a>
+      </div>
     </div>
-    <div class="authors">
-      <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, Shazia Sadiq
-    </div>
-    <div class="venue">ICDE 2026</div>
-    <div>
-      <a href="https://arxiv.org/abs/2603.07950">Paper</a> 
-    </div>
-  </div>
+  </nav>
 
-  <!-- Paper 2 -->
-  <div class="pub">
-    <div class="title">
-      Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach
-    </div>
-    <div class="authors">
-      <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, Xiaoli Wang
-    </div>
-    <div class="venue">VLDB Journal, 2025</div>
-    <div>
-      <a href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank">Paper</a>
-    </div>
-  </div>
+  <main class="page">
+    <header class="page-header">
+      <h1 class="page-title">Publications</h1>
+      <p class="page-desc">A selected list of my publications is below.</p>
+    </header>
 
-  <footer>
-    © 2026 Feng Luo
+    <section class="pub-list">
+      <div class="pub-item">
+        <div class="pub-badge">ICDE’26</div>
+        <div>
+          <div class="pub-title">Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering</div>
+          <div class="pub-authors">
+            <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, and Shazia Sadiq
+          </div>
+          <div class="pub-venue">ICDE, 2026</div>
+          <div class="pub-links">
+            <a href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">VLDBJ’26</div>
+        <div>
+          <div class="pub-title">Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach</div>
+          <div class="pub-authors">
+            <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, and Xiaoli Wang
+          </div>
+          <div class="pub-venue">VLDB Journal, 2025</div>
+          <div class="pub-links">
+            <a href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      © Copyright 2025 Feng Luo. Powered by
+      <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>
+      with the
+      <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener">al-folio</a>
+      theme.
+    </div>
   </footer>
-
-</div>
-
 </body>
 </html>
