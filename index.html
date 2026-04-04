@@ -111,15 +111,20 @@
     }
 
     .post-header {
-      text-align: left;
-      margin-bottom: 28px;
+      flex: 1;
+    }
+    
+    .post-title {
+      font-size: 2.2rem;
+      font-weight: 600;
     }
 
-    .post-title {
-      margin: 0 0 8px 0;
-      font-size: 2.8rem;
-      font-weight: 600;
-      line-height: 1.2;
+    .top-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      margin-bottom: 30px;
     }
 
     .desc {
@@ -138,18 +143,13 @@
     }
 
     .profile {
-      flex: 0 0 240px;
-      display: flex;
-      justify-content: center;
+      flex-shrink: 0;
     }
-
+    
     .profile img {
       width: 120px;
-      max-width: 100%;
       height: auto;
-      border-radius: 10px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
-      display: block;
+      border-radius: 12px;
     }
 
     .content {
