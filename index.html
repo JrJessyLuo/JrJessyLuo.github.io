@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Feng Luo</title>
+  <meta name="author" content="Feng Luo">
+  <meta name="description" content="Personal website of Feng Luo.">
+  <meta name="keywords" content="Feng Luo, personal website">
+  <link rel="canonical" href="https://jrjessyluo.github.io/">
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
 
   <style>
     :root {
@@ -13,30 +18,85 @@
       --text-light: #6f6f6f;
       --theme: #2698ba;
       --divider: rgba(0, 0, 0, 0.12);
+      --footer-bg: #1c1c1d;
+      --footer-text: #e8e8e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
       margin: 0;
       padding-top: 72px;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
     }
 
-    a { color: var(--theme); text-decoration: none; }
+    a {
+      color: var(--theme);
+      text-decoration: none;
+    }
 
-    /* NAVBAR */
+    a:hover {
+      text-decoration: underline;
+    }
+
     .navbar {
       position: fixed;
-      top: 0; left: 0; right: 0;
-      background: white;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
       border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(8px);
     }
 
     .nav-inner {
       max-width: 980px;
-      margin: auto;
+      margin: 0 auto;
       padding: 14px 20px;
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .social a:hover {
+      color: var(--theme);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.98rem;
     }
 
     .nav-links a.active {
@@ -44,111 +104,180 @@
       font-weight: 600;
     }
 
-    /* PAGE */
     .page {
       max-width: 980px;
-      margin: auto;
-      padding: 40px 20px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
     }
 
     .card {
-      border: 1px solid #eee;
+      background: #ffffff;
+      border: 1px solid rgba(0, 0, 0, 0.08);
       border-radius: 16px;
-      padding: 28px;
+      padding: 28px 32px;
       margin-bottom: 24px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
     }
 
-    /* TOP */
     .top-layout {
       display: flex;
-      gap: 30px;
       align-items: center;
+      gap: 32px;
+    }
+
+    .profile {
+      flex: 0 0 150px;
     }
 
     .profile img {
-      width: 140px;
+      width: 150px;
+      max-width: 100%;
+      height: auto;
       border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+      display: block;
+    }
+
+    .post-header {
+      flex: 1;
+      text-align: left;
     }
 
     .post-title {
-      font-size: 2.3rem;
-      margin: 0;
+      margin: 0 0 12px 0;
+      font-size: 2.4rem;
+      font-weight: 600;
+      line-height: 1.2;
     }
 
     .desc {
+      margin: 0 0 6px 0;
       color: var(--text-light);
-      margin: 4px 0;
+      font-size: 1.05rem;
     }
 
-    /* PUBLICATIONS */
-    .pub-list {
-      margin-top: 10px;
-    }
-
-    .pub-item {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 20px;
-    }
-
-    .pub-badge {
-      background: #eee;
-      padding: 6px 10px;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      height: fit-content;
-    }
-
-    .pub-title {
+    .about-card h2 {
+      margin: 0 0 16px 0;
+      font-size: 1.5rem;
       font-weight: 600;
     }
 
-    .pub-authors {
-      font-size: 0.95rem;
-      color: #333;
-    }
-
-    .pub-venue {
-      font-size: 0.9rem;
-      color: var(--text-light);
-    }
-
-    .pub-links a {
-      font-size: 0.9rem;
-    }
-
-    h2 {
+    .content p {
       margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1rem;
+      line-height: 1.75;
+    }
+
+    .footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 18px 20px;
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .card {
+        padding: 24px 20px;
+      }
+
+      .top-layout {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .profile {
+        flex: none;
+      }
+
+      .profile img {
+        width: 120px;
+      }
+
+      .post-title {
+        font-size: 2rem;
+      }
+
+      .pub-list {
+        margin-top: 10px;
+      }
+      
+      .pub-item {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 20px;
+      }
+      
+      .pub-badge {
+        background: #eee;
+        padding: 6px 10px;
+        border-radius: 6px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        height: fit-content;
+      }
+      
+      .pub-title {
+        font-weight: 600;
+      }
+      
+      .pub-authors {
+        font-size: 0.95rem;
+      }
+      
+      .pub-venue {
+        font-size: 0.9rem;
+        color: var(--text-light);
+      }
+      
+      .pub-links a {
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
 
 <body>
-
   <nav class="navbar">
     <div class="nav-inner">
-      <div>
+      <div class="social">
         <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+        <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
       </div>
+
       <div class="nav-links">
-        <a class="active" href="/">About</a>
-        <a href="/publications/">Publications</a>
+        <a class="active" href="https://jrjessyluo.github.io/">About</a>
+        <a href="https://jrjessyluo.github.io/publications/">Publications</a>
       </div>
     </div>
   </nav>
 
   <main class="page">
 
-    <!-- TOP -->
-    <section class="card">
+    <!-- Top card -->
+    <section class="card top-card">
       <div class="top-layout">
         <div class="profile">
-          <img src="prof_pic.jpeg">
+          <img src="prof_pic.jpeg" alt="Profile photo of Feng Luo">
         </div>
 
-        <div>
+        <div class="post-header">
           <h1 class="post-title">Feng Luo</h1>
           <p class="desc">PhD Student, RMIT University</p>
           <p class="desc">Visiting Researcher, The University of Queensland</p>
@@ -156,27 +285,29 @@
       </div>
     </section>
 
-    <!-- ABOUT -->
-    <section class="card">
+    <!-- About card -->
+    <section class="card about-card">
       <h2>About Me</h2>
-      <p>
-        I am a PhD student in Computer Science at RMIT University, supervised by
-        Prof. <a href="https://baozhifeng.net/" target="_blank">Zhifeng Bao</a>,
-        Prof. <a href="https://jsc.github.io/" target="_blank">J. Shane Culpepper</a>,
-        and Dr. <a href="https://scholars.uow.edu.au/hui-luo/" target="_blank">Hui Luo</a>.
-      </p>
+      <div class="content">
+        <p>
+          I am a PhD student in Computer Science at RMIT University, supervised by
+          Prof. <a href="https://baozhifeng.net/" target="_blank" rel="noopener">Zhifeng Bao</a>,
+          Prof. <a href="https://jsc.github.io/" target="_blank" rel="noopener">J. Shane Culpepper</a>,
+          and Dr. <a href="https://scholars.uow.edu.au/hui-luo/" target="_blank" rel="noopener">Hui Luo</a>.
+        </p>
 
-      <p>
-        My research focuses on data discovery and analytics in data lakes.
-      </p>
+        <p>
+          My research focuses on data discovery and analytics in data lakes.
+        </p>
+      </div>
     </section>
 
-    <!-- PUBLICATIONS -->
-    <section class="card">
+    <!-- About selected publications -->
+    <section class="card about-card">
       <h2>Selected Publications</h2>
-
-      <div class="pub-list">
-
+    
+      <section class="pub-list">
+    
         <div class="pub-item">
           <div class="pub-badge">ICDE’26</div>
           <div>
@@ -184,15 +315,15 @@
               Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering
             </div>
             <div class="pub-authors">
-              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, Shazia Sadiq
+              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, and Shazia Sadiq
             </div>
             <div class="pub-venue">ICDE, 2026</div>
             <div class="pub-links">
-              <a href="https://arxiv.org/abs/2603.07950" target="_blank">Paper</a>
+              <a href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
             </div>
           </div>
         </div>
-
+    
         <div class="pub-item">
           <div class="pub-badge">VLDBJ’26</div>
           <div>
@@ -200,17 +331,18 @@
               Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach
             </div>
             <div class="pub-authors">
-              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, Xiaoli Wang
+              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, and Xiaoli Wang
             </div>
             <div class="pub-venue">VLDB Journal, 2025</div>
             <div class="pub-links">
-              <a href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank">Paper</a>
+              <a href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
             </div>
           </div>
         </div>
-
-      </div>
+    
+      </section>
     </section>
+  </main>
 
   </main>
 
