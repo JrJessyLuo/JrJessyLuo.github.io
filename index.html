@@ -2,44 +2,45 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Feng Luo</title>
+  <meta name="author" content="Feng Luo">
+  <meta name="description" content="Personal website of Feng Luo.">
+  <meta name="keywords" content="Feng Luo, personal website">
+  <link rel="canonical" href="https://jrjessyluo.github.io/">
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
 
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --text-light: #6f6f6f;
+      --theme: #2698ba;
+      --divider: rgba(0, 0, 0, 0.12);
+      --footer-bg: #1c1c1d;
+      --footer-text: #e8e8e8;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
       margin: 0;
-      background: #f8f9fb;
-      color: #222;
-    }
-
-    .container {
-      max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
-    }
-
-    h1 {
-      margin-bottom: 5px;
-      font-size: 2.5em;
-    }
-
-    .subtitle {
-      color: #666;
-      margin-bottom: 20px;
-    }
-
-    .section {
-      margin-top: 30px;
-    }
-
-    .section h2 {
-      color: #2c3e50;
-      margin-bottom: 10px;
+      padding-top: 72px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
     }
 
     a {
-      color: #1a73e8;
+      color: var(--theme);
       text-decoration: none;
     }
 
@@ -47,70 +48,218 @@
       text-decoration: underline;
     }
 
-    .nav {
-      margin-bottom: 20px;
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(8px);
     }
 
-    .nav a {
-      margin-right: 20px;
-      font-weight: bold;
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
     }
 
-    footer {
-      margin-top: 40px;
-      color: #777;
-      font-size: 0.9em;
+    .social {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .social a {
+      color: var(--text);
+      font-size: 0.95rem;
+      font-weight: 500;
+    }
+
+    .social a:hover {
+      color: var(--theme);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .nav-links a.active {
+      color: var(--theme);
+      font-weight: 600;
+    }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .post-header {
+      text-align: left;
+      margin-bottom: 28px;
+    }
+
+    .post-title {
+      margin: 0 0 8px 0;
+      font-size: 2.8rem;
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    .desc {
+      margin: 0;
+      color: var(--text-light);
+      font-size: 1.05rem;
+    }
+
+    .about-layout {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 36px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .profile {
+      flex: 0 0 240px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile img {
+      width: 240px;
+      max-width: 100%;
+      height: auto;
+      border-radius: 10px;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+      display: block;
+    }
+
+    .content {
+      flex: 1 1 560px;
+      max-width: 620px;
+    }
+
+    .content p {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+
+    h2 {
+      font-size: 1.7rem;
+      font-weight: 600;
+      margin-top: 42px;
+      margin-bottom: 16px;
+    }
+
+    .footer {
+      background: var(--footer-bg);
+      color: var(--footer-text);
+      padding: 18px 20px;
+      font-size: 0.92rem;
+    }
+
+    .footer-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer a {
+      color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+      .nav-inner {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .post-title {
+        font-size: 2.2rem;
+      }
+
+      .about-layout {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .content {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="social">
+        <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+        <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+      </div>
 
-<div class="container">
+      <div class="nav-links">
+        <a class="active" href="https://jrjessyluo.github.io/">About</a>
+        <a href="https://jrjessyluo.github.io/publications/">Publications</a>
+      </div>
+    </div>
+  </nav>
 
-  <!-- Navigation -->
-  <div class="nav">
-    <a href="/">About</a>
-    <a href="/publications/">Publications</a>
-  </div>
+  <main class="page">
+    <header class="post-header">
+      <h1 class="post-title">Feng Luo</h1>
+      <p class="desc">PhD Student, RMIT University</p>
+      <p class="desc">Visiting Researcher, The University of Queensland</p>
+    </header>
 
-  <!-- Header -->
-  <h1>Feng Luo</h1>
-  <div class="subtitle">
-    PhD Student, RMIT University <br>
-    Visiting Researcher, The University of Queensland
-  </div>
+    <section class="about-layout">
+      <div class="profile">
+        <img src="prof_pic.jpeg" alt="Profile photo of Feng Luo">
+      </div>
 
-  <!-- About -->
-  <div class="section">
-    <h2>About</h2>
-    <p>
-              I am a PhD student in Computer Science at RMIT University, supervised by
-              Prof. <a href="https://baozhifeng.net/" rel="external nofollow noopener" target="_blank">Zhifeng Bao</a>,
-              Prof. <a href="https://jsc.github.io/" rel="external nofollow noopener" target="_blank">J. Shane Culpepper</a>, and
-              Dr. <a href="https://scholars.uow.edu.au/hui-luo/" rel="external nofollow noopener" target="_blank">Hui Luo</a>.
-            </p>
+      <div class="content">
+        <p>
+          I am a PhD student in Computer Science at RMIT University, supervised by
+          Prof. <a href="https://baozhifeng.net/" target="_blank" rel="noopener">Zhifeng Bao</a>,
+          Prof. <a href="https://jsc.github.io/" target="_blank" rel="noopener">J. Shane Culpepper</a>, and
+          Dr. <a href="https://scholars.uow.edu.au/hui-luo/" target="_blank" rel="noopener">Hui Luo</a>.
+        </p>
 
+        <p>
+          My research focuses on data discovery and analytics in data lakes.
+        </p>
+      </div>
+    </section>
+  </main>
 
-    <p>My research focuses on data discovery and analytics in data lakes.</p>
-  </div>
-
-
-  <!-- Contact -->
-  <div class="section">
-    <h2>Contact</h2>
-    <p>
-      <a href="mailto:feng.luo@student.rmit.edu.au">Email</a> |
-      <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank">Google Scholar</a> |
-      <a href="https://github.com/JrJessyLuo" target="_blank">GitHub</a>
-    </p>
-  </div>
-
-  <footer>
-    © 2026 Feng Luo
+  <footer class="footer">
+    <div class="footer-inner">
+      © Copyright 2025 Feng Luo. Powered by
+      <a href="https://jekyllrb.com/" target="_blank" rel="noopener">Jekyll</a>
+      with the
+      <a href="https://github.com/alshedivat/al-folio" target="_blank" rel="noopener">al-folio</a>
+      theme.
+    </div>
   </footer>
-
-</div>
-
 </body>
 </html>
