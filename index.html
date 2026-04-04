@@ -55,12 +55,12 @@
       right: 0;
       z-index: 1000;
       background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid var(--divider);
+      border-bottom: 1px solid transparent;
       backdrop-filter: blur(8px);
     }
 
     .nav-inner {
-      max-width: 980px;
+      max-width: 1200px;
       margin: 0 auto;
       padding: 14px 20px;
       display: flex;
@@ -105,37 +105,38 @@
     }
 
     .page {
-      max-width: 1200px;
+      max-width: 1250px;
       margin: 0 auto;
       padding: 40px 20px 80px;
     }
 
     .card {
       background: #ffffff;
-      border: 1px solid rgba(0, 0, 0, 0.08);
+      border: none;
       border-radius: 16px;
       padding: 28px 32px;
-      margin-bottom: 0;
+      margin-bottom: 16px;
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
     }
 
     .top-layout {
       display: flex;
       align-items: center;
-      gap: 32px;
+      gap: 40px;
     }
 
     .profile {
-      flex: 0 0 150px;
+      flex: 0 0 260px;
     }
 
     .profile img {
-      width: 220px;
-      max-width: 100%;
+      width: 260px;
       height: auto;
+      max-width: 100%;
       border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.12);
+      box-shadow: none;
       display: block;
+      object-fit: contain;
     }
 
     .post-header {
@@ -145,28 +146,28 @@
 
     .post-title {
       margin: 0 0 12px 0;
-      font-size: 2.4rem;
+      font-size: 2.8rem;
       font-weight: 600;
       line-height: 1.2;
     }
 
     .desc {
-      margin: 0 0 6px 0;
+      margin: 0 0 8px 0;
       color: var(--text-light);
-      font-size: 1.05rem;
+      font-size: 1.15rem;
     }
 
     .about-card h2 {
       margin: 0 0 16px 0;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       font-weight: 600;
     }
 
     .content p {
       margin-top: 0;
       margin-bottom: 16px;
-      font-size: 1rem;
-      line-height: 1.75;
+      font-size: 1.05rem;
+      line-height: 1.8;
     }
 
     /* Selected Publications style */
@@ -176,7 +177,7 @@
 
     .pub-item {
       display: grid;
-      grid-template-columns: 110px 1fr;
+      grid-template-columns: 120px 1fr;
       gap: 24px;
       padding: 22px 0;
       border-bottom: 1px solid var(--divider);
@@ -194,28 +195,29 @@
 
     .pub-badge {
       display: inline-block;
-      padding: 4px 10px;
+      padding: 4px 12px;
       border: 1px solid #d9d9d9;
       border-radius: 999px;
       font-size: 0.82rem;
       color: #555;
       white-space: nowrap;
       text-align: center;
+      background: #fff;
     }
 
     .pub-title {
-      font-size: 1.08rem;
+      font-size: 1.12rem;
       font-weight: 600;
       margin-bottom: 6px;
     }
 
     .pub-authors {
-      font-size: 0.98rem;
+      font-size: 1rem;
       color: #444;
     }
 
     .pub-venue {
-      font-size: 0.97rem;
+      font-size: 1rem;
       color: #666;
       font-style: italic;
       margin-top: 6px;
@@ -228,7 +230,7 @@
     .pub-links a {
       display: inline-block;
       margin-right: 14px;
-      font-size: 0.95rem;
+      font-size: 0.98rem;
     }
 
     .footer {
@@ -268,11 +270,15 @@
       }
 
       .profile img {
-        width: 120px;
+        width: 180px;
       }
 
       .post-title {
-        font-size: 2rem;
+        font-size: 2.1rem;
+      }
+
+      .desc {
+        font-size: 1.02rem;
       }
 
       .pub-list {
@@ -358,6 +364,7 @@
             <div class="pub-venue">ICDE, 2026</div>
             <div class="pub-links">
               <a href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
+              <a href="Multi-Table Retrieval.pptx" target="_blank" rel="noopener">Slide</a>
             </div>
           </div>
         </div>
@@ -372,6 +379,7 @@
             <div class="pub-venue">VLDB Journal, 2025</div>
             <div class="pub-links">
               <a href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
+              <a href="Missing value imputation.pptx" target="_blank" rel="noopener">Slide</a>
             </div>
           </div>
         </div>
