@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Feng Luo | PhD Student at RMIT University</title>
+  <title>Feng Luo | PhD Candidate, RMIT University</title>
   <meta name="author" content="Feng Luo">
-  <meta name="description" content="Feng Luo is a PhD student in Computer Science at RMIT University and a Visiting Researcher at The University of Queensland. His research focuses on data lakes, table understanding, and multi-table question answering.">
-  <meta name="keywords" content="Feng Luo, RMIT University, Computer Science, data lakes, table understanding, multi-table question answering">
+  <meta name="description" content="Feng Luo is a PhD candidate in Computer Science at RMIT University. His research focuses on AI for tabular data intelligence, including data lake analytics, numerical question answering, and missing value imputation.">
+  <meta name="keywords" content="Feng Luo, RMIT University, data lakes, table question answering, missing value imputation, numerical QA, semi-structured tables">
   <link rel="canonical" href="https://jrjessyluo.github.io/">
   <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
 
@@ -19,16 +19,10 @@
     "name": "Feng Luo",
     "url": "https://jrjessyluo.github.io/",
     "image": "https://jrjessyluo.github.io/prof_pic.jpeg",
-    "jobTitle": "PhD Student",
+    "jobTitle": "PhD Candidate",
     "affiliation": [
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "RMIT University"
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        "name": "The University of Queensland"
-      }
+      { "@type": "CollegeOrUniversity", "name": "RMIT University" },
+      { "@type": "CollegeOrUniversity", "name": "The University of Queensland" }
     ],
     "sameAs": [
       "https://scholar.google.com/citations?user=OH8VnF8AAAAJ",
@@ -36,289 +30,328 @@
     ]
   }
   </script>
+
   <style>
     :root {
-      --bg: #ffffff;
-      --text: #000000;
-      --text-light: #6f6f6f;
-      --theme: #2698ba;
-      --divider: rgba(0, 0, 0, 0.12);
-      --footer-bg: #1c1c1d;
-      --footer-text: #e8e8e8;
+      --bg: #f7f9fc;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --text-light: #6b7280;
+      --theme: #2563eb;
+      --theme-dark: #1d4ed8;
+      --accent: #0ea5e9;
+      --divider: rgba(0, 0, 0, 0.08);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
     }
 
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
-      padding-top: 72px;
+      padding-top: 68px;
       background: var(--bg);
       color: var(--text);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      line-height: 1.65;
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.7;
+      font-size: 16px;
     }
 
-    a {
-      color: var(--theme);
-      text-decoration: none;
-    }
+    a { color: var(--theme); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--theme-dark); }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
+    /* Navbar */
     .navbar {
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.96);
-      border-bottom: 1px solid transparent;
-      backdrop-filter: blur(8px);
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(12px);
     }
 
     .nav-inner {
-      max-width: 1200px;
+      max-width: 1100px;
       margin: 0 auto;
-      padding: 14px 20px;
+      padding: 0 24px;
+      height: 68px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 20px;
     }
 
-    .social {
+    .nav-brand {
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .nav-brand span { color: var(--theme); }
+
+    .nav-right {
       display: flex;
       align-items: center;
-      gap: 16px;
-      flex-wrap: wrap;
-    }
-
-    .social a {
-      color: var(--text);
-      font-size: 0.95rem;
-      font-weight: 500;
-    }
-
-    .social a:hover {
-      color: var(--theme);
-      text-decoration: none;
+      gap: 28px;
     }
 
     .nav-links {
       display: flex;
       align-items: center;
       gap: 24px;
-      flex-wrap: wrap;
     }
 
     .nav-links a {
-      color: var(--text);
-      font-size: 0.98rem;
+      color: var(--text-light);
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: color 0.15s;
     }
 
-    .nav-links a.active {
+    .nav-links a:hover, .nav-links a.active {
       color: var(--theme);
-      font-weight: 600;
+      text-decoration: none;
     }
 
-    .page {
-      max-width: 1250px;
-      margin: 0 auto;
-      padding: 40px 20px 80px;
-    }
+    .nav-links a.active { font-weight: 600; }
 
-    .card {
-      background: #ffffff;
-      border: none;
-      border-radius: 16px;
-      padding: 28px 32px;
-      margin-bottom: 16px;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
-    }
-
-    .top-layout {
+    .nav-social {
       display: flex;
       align-items: center;
-      gap: 40px;
+      gap: 14px;
     }
 
-    .profile {
-      flex: 0 0 260px;
-    }
-
-    .profile img {
-      width: 260px;
-      height: auto;
-      max-width: 100%;
-      border-radius: 12px;
-      box-shadow: none;
-      display: block;
-      object-fit: contain;
-    }
-
-    .post-header {
-      flex: 1;
-      text-align: left;
-    }
-
-    .post-title {
-      margin: 0 0 12px 0;
-      font-size: 2.8rem;
-      font-weight: 600;
-      line-height: 1.2;
-    }
-
-    .desc {
-      margin: 0 0 8px 0;
+    .nav-social a {
       color: var(--text-light);
-      font-size: 1.15rem;
+      font-size: 0.88rem;
+      font-weight: 500;
+      transition: color 0.15s;
     }
 
-    .about-card h2 {
-      margin: 0 0 16px 0;
-      font-size: 1.7rem;
-      font-weight: 600;
+    .nav-social a:hover { color: var(--theme); text-decoration: none; }
+
+    .nav-divider {
+      width: 1px;
+      height: 20px;
+      background: var(--divider);
     }
 
-    .content p {
-      margin-top: 0;
-      margin-bottom: 16px;
+    /* Page layout */
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 40px 24px 80px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 32px 36px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* Hero / profile card */
+    .hero-card {
+      padding: 40px 36px;
+    }
+
+    .hero-layout {
+      display: flex;
+      align-items: flex-start;
+      gap: 48px;
+    }
+
+    .profile-photo {
+      flex: 0 0 200px;
+    }
+
+    .profile-photo img {
+      width: 200px;
+      height: 200px;
+      border-radius: 12px;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    }
+
+    .hero-info { flex: 1; }
+
+    .hero-name {
+      margin: 0 0 6px;
+      font-size: 2.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .hero-role {
       font-size: 1.05rem;
-      line-height: 1.8;
+      color: var(--text-light);
+      margin: 0 0 4px;
     }
 
-    /* Selected Publications style */
-    .pub-list {
-      margin-top: 28px;
+    .hero-role strong { color: var(--text); font-weight: 600; }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
     }
+
+    .hero-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 7px 16px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      border: 1.5px solid var(--divider);
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .hero-link:hover {
+      border-color: var(--theme);
+      color: var(--theme);
+      text-decoration: none;
+    }
+
+    /* Section headings */
+    .section-heading {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0 0 20px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #e5e7eb;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+
+    .section-heading span {
+      display: inline-block;
+      border-bottom: 2px solid var(--theme);
+      padding-bottom: 12px;
+      margin-bottom: -14px;
+    }
+
+    /* About text */
+    .about-text p {
+      margin: 0 0 14px;
+      font-size: 1.02rem;
+      line-height: 1.85;
+      color: #374151;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    /* Research interests tags */
+    .interests-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-light);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin: 20px 0 10px;
+    }
+
+    .interests-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .interest-tag {
+      display: inline-block;
+      padding: 5px 14px;
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 999px;
+      font-size: 0.83rem;
+      color: #1d4ed8;
+      font-weight: 500;
+    }
+
+    /* Publications */
+    .pub-list { margin-top: 4px; }
 
     .pub-item {
       display: grid;
-      grid-template-columns: 120px 1fr;
-      gap: 24px;
-      padding: 22px 0;
+      grid-template-columns: 90px 1fr;
+      gap: 20px;
+      padding: 20px 0;
       border-bottom: 1px solid var(--divider);
       align-items: start;
     }
 
-    .pub-item:first-child {
-      padding-top: 0;
-    }
-
-    .pub-item:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
+    .pub-item:first-child { padding-top: 4px; }
+    .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
 
     .pub-badge {
-      display: inline-block;
-      padding: 4px 12px;
-      border: 1px solid #d9d9d9;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      color: #555;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
       white-space: nowrap;
       text-align: center;
-      background: #fff;
     }
+
+    .badge-icde  { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+    .badge-vldbj { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-sigmod{ background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .badge-other { background: #f9fafb; color: #374151; border: 1px solid #e5e7eb; }
 
     .pub-title {
-      font-size: 1.12rem;
+      font-size: 1rem;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
+      color: var(--text);
+      line-height: 1.5;
     }
 
-    .pub-authors {
-      font-size: 1rem;
-      color: #444;
+    .pub-authors { font-size: 0.93rem; color: #4b5563; }
+    .pub-venue { font-size: 0.93rem; color: #6b7280; font-style: italic; margin-top: 5px; }
+
+    .pub-links { margin-top: 8px; display: flex; gap: 12px; }
+
+    .pub-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.83rem;
+      font-weight: 500;
+      color: var(--theme);
+      padding: 3px 10px;
+      border: 1px solid #bfdbfe;
+      border-radius: 5px;
+      background: #eff6ff;
+      transition: background 0.15s;
     }
 
-    .pub-venue {
-      font-size: 1rem;
-      color: #666;
-      font-style: italic;
-      margin-top: 6px;
-    }
-
-    .pub-links {
-      margin-top: 10px;
-    }
-
-    .pub-links a {
-      display: inline-block;
-      margin-right: 14px;
-      font-size: 0.98rem;
-    }
-
-    .footer {
-      background: var(--footer-bg);
-      color: var(--footer-text);
-      padding: 18px 20px;
-      font-size: 0.92rem;
-    }
-
-    .footer-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    .footer a {
-      color: #ffffff;
+    .pub-link-btn:hover {
+      background: #dbeafe;
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .card {
-        padding: 24px 20px;
-      }
-
-      .top-layout {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .profile {
-        flex: none;
-      }
-
-      .profile img {
-        width: 180px;
-      }
-
-      .post-title {
-        font-size: 2.1rem;
-      }
-
-      .desc {
-        font-size: 1.02rem;
-      }
-
-      .pub-list {
-        margin-top: 16px;
-      }
-
-      .pub-item {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 18px 0;
-      }
-
-      .pub-badge {
-        width: fit-content;
-      }
+      .nav-inner { padding: 0 16px; }
+      .nav-social { display: none; }
+      .card { padding: 24px 20px; }
+      .hero-card { padding: 28px 20px; }
+      .hero-layout { flex-direction: column; gap: 24px; }
+      .profile-photo { flex: none; }
+      .profile-photo img { width: 140px; height: 140px; }
+      .hero-name { font-size: 2rem; }
+      .pub-item { grid-template-columns: 1fr; gap: 10px; }
     }
   </style>
 </head>
@@ -326,90 +359,116 @@
 <body>
   <nav class="navbar">
     <div class="nav-inner">
-      <div class="social">
-        <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
-        <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
-        <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
-      </div>
-
-      <div class="nav-links">
-        <a class="active" href="https://jrjessyluo.github.io/">About</a>
-        <a href="https://jrjessyluo.github.io/publications/">Publications</a>
+      <div class="nav-brand">Feng <span>Luo</span></div>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a class="active" href="https://jrjessyluo.github.io/">About</a>
+          <a href="https://jrjessyluo.github.io/publications/">Publications</a>
+          <a href="https://jrjessyluo.github.io/projects/">Projects</a>
+        </nav>
+        <div class="nav-divider"></div>
+        <div class="nav-social">
+          <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+          <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+        </div>
       </div>
     </div>
   </nav>
 
   <main class="page">
 
-    <!-- Top card -->
-    <section class="card top-card">
-      <div class="top-layout">
-        <div class="profile">
-          <img src="prof_pic.jpeg" alt="Profile photo of Feng Luo">
+    <!-- Hero -->
+    <section class="card hero-card">
+      <div class="hero-layout">
+        <div class="profile-photo">
+          <img src="prof_pic.jpeg" alt="Feng Luo">
         </div>
-
-        <div class="post-header">
-          <h1 class="post-title">Feng Luo</h1>
-          <p class="desc">PhD Student, RMIT University</p>
-          <p class="desc">Visiting Researcher, The University of Queensland</p>
+        <div class="hero-info">
+          <h1 class="hero-name">Feng Luo</h1>
+          <p class="hero-role">Ph.D. Candidate · <strong>RMIT University</strong></p>
+          <p class="hero-role">Visiting Researcher · <strong>The University of Queensland</strong></p>
+          <div class="hero-links">
+            <a class="hero-link" href="mailto:feng.luo@student.rmit.edu.au">✉ Email</a>
+            <a class="hero-link" href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+            <a class="hero-link" href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- About card -->
-    <section class="card about-card">
-      <h2>About Me</h2>
-      <div class="content">
+    <!-- About -->
+    <section class="card">
+      <h2 class="section-heading"><span>About Me</span></h2>
+      <div class="about-text">
         <p>
-          Feng Luo is a PhD student in Computer Science at RMIT University, supervised by
-          Prof. <a href="https://baozhifeng.net/" target="_blank" rel="noopener">Zhifeng Bao</a>,
+          I am a Ph.D. candidate in Computer Science at <a href="https://www.rmit.edu.au/" target="_blank" rel="noopener">RMIT University</a>,
+          advised by Prof. <a href="https://baozhifeng.net/" target="_blank" rel="noopener">Zhifeng Bao</a>,
           Prof. <a href="https://jsc.github.io/" target="_blank" rel="noopener">J. Shane Culpepper</a>,
           and Dr. <a href="https://scholars.uow.edu.au/hui-luo/" target="_blank" rel="noopener">Hui Luo</a>.
+          I am also a Visiting Researcher at <a href="https://www.uq.edu.au/" target="_blank" rel="noopener">The University of Queensland</a>.
+        </p>
+        <p>
+          My research focuses on <strong>tabular data intelligence</strong> — building LLM-powered systems that can effectively
+          discover, complete, and query complex tabular data at scale. I am particularly interested in the real-world challenges
+          this entails: retrieving relevant tables from large-scale data lakes, recovering missing values from incomplete datasets,
+          and answering complex numerical questions over semi-structured tables — all under practical cost and efficiency constraints.
+        </p>
+        <p>
+          I also have prior experience in <strong>AI for healthcare</strong>, developing deep learning systems for
+          medical question answering, patient similarity search, and clinical representation learning from electronic health records.
         </p>
 
-        <p>
-          My research focuses on data discovery and analytics in data lakes.
-        </p>
+        <div class="interests-label">Research Interests</div>
+        <div class="interests-tags">
+          <span class="interest-tag">Tabular Data Discovery</span>
+          <span class="interest-tag">Numerical Question Answering</span>
+          <span class="interest-tag">Missing Value Imputation</span>
+          <span class="interest-tag">LLM-based Reasoning</span>
+          <span class="interest-tag">AI for Healthcare</span>
+        </div>
       </div>
     </section>
 
     <!-- Selected Publications -->
-    <section class="card about-card">
-      <h2>Selected Publications</h2>
-
-      <section class="pub-list">
+    <section class="card">
+      <h2 class="section-heading"><span>Selected Publications</span></h2>
+      <div class="pub-list">
 
         <div class="pub-item">
-          <div class="pub-badge">ICDE’26</div>
+          <div class="pub-badge badge-icde">ICDE 2026</div>
           <div>
             <div class="pub-title">Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering</div>
             <div class="pub-authors">
-              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, and Shazia Sadiq
+              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, Shazia Sadiq
             </div>
-            <div class="pub-venue">ICDE, 2026</div>
+            <div class="pub-venue">IEEE International Conference on Data Engineering (ICDE), 2026</div>
             <div class="pub-links">
-              <a href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
-              <a href="Multi-Table Retrieval.pptx" target="_blank" rel="noopener">Slide</a>
+              <a class="pub-link-btn" href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
+              <a class="pub-link-btn" href="Multi-Table Retrieval.pptx" target="_blank" rel="noopener">Slides</a>
             </div>
           </div>
         </div>
 
         <div class="pub-item">
-          <div class="pub-badge">VLDBJ’26</div>
+          <div class="pub-badge badge-vldbj">VLDB J. 2026</div>
           <div>
             <div class="pub-title">Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach</div>
             <div class="pub-authors">
-              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, and Xiaoli Wang
+              <strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, Xiaoli Wang
             </div>
-            <div class="pub-venue">VLDB Journal, 2026</div>
+            <div class="pub-venue">The VLDB Journal, 2026</div>
             <div class="pub-links">
-              <a href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
-              <a href="Missing value imputation.pptx" target="_blank" rel="noopener">Slide</a>
+              <a class="pub-link-btn" href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
+              <a class="pub-link-btn" href="Missing value imputation.pptx" target="_blank" rel="noopener">Slides</a>
             </div>
           </div>
         </div>
 
-      </section>
+      </div>
+      <p style="margin: 20px 0 0; font-size: 0.92rem; color: var(--text-light);">
+        → <a href="https://jrjessyluo.github.io/publications/">View full publication list</a>
+      </p>
     </section>
 
   </main>
