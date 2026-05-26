@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Publications | Feng Luo</title>
+  <meta name="author" content="Feng Luo">
+  <link rel="canonical" href="https://jrjessyluo.github.io/publications/">
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --text-light: #6b7280;
+      --theme: #2563eb;
+      --theme-dark: #1d4ed8;
+      --divider: rgba(0,0,0,0.08);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; padding-top: 68px;
+      background: var(--bg); color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: var(--theme); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--theme-dark); }
+
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text); }
+    .nav-brand span { color: var(--theme); }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text-light); font-size: 0.95rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--theme); text-decoration: none; }
+    .nav-links a.active { font-weight: 600; }
+    .nav-social { display: flex; align-items: center; gap: 14px; }
+    .nav-social a { color: var(--text-light); font-size: 0.88rem; font-weight: 500; }
+    .nav-social a:hover { color: var(--theme); text-decoration: none; }
+    .nav-divider { width: 1px; height: 20px; background: var(--divider); }
+
+    .page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .page-header { margin-bottom: 32px; }
+    .page-title { margin: 0 0 8px; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em; }
+    .page-desc { color: var(--text-light); margin: 0; font-size: 1.02rem; }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 32px 36px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    /* Year group */
+    .year-group { margin-bottom: 36px; }
+    .year-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .year-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--divider);
+    }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: start;
+    }
+    .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .pub-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-align: center;
+      margin-top: 2px;
+    }
+    .badge-icde  { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+    .badge-vldbj { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+    .badge-sigmod{ background: #f0fdf4; color: #15803d; border: 1px solid #bbf7d0; }
+    .badge-lrec  { background: #fdf4ff; color: #7e22ce; border: 1px solid #e9d5ff; }
+    .badge-tkde  { background: #fff7ed; color: #b45309; border: 1px solid #fde68a; }
+    .badge-cikm  { background: #fff1f2; color: #be123c; border: 1px solid #fecdd3; }
+    .badge-www   { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+    .badge-other { background: #f9fafb; color: #374151; border: 1px solid #e5e7eb; }
+
+    .pub-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .pub-authors { font-size: 0.93rem; color: #4b5563; line-height: 1.6; }
+    .pub-venue { font-size: 0.93rem; color: #6b7280; font-style: italic; margin-top: 4px; }
+    .pub-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .pub-link-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.82rem; font-weight: 500; color: var(--theme);
+      padding: 3px 10px; border: 1px solid #bfdbfe;
+      border-radius: 5px; background: #eff6ff;
+    }
+    .pub-link-btn:hover { background: #dbeafe; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .nav-social { display: none; }
+      .page { padding: 32px 16px 60px; }
+      .card { padding: 24px 18px; }
+      .pub-item { grid-template-columns: 1fr; gap: 8px; }
+      .page-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">Feng <span>Luo</span></div>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="https://jrjessyluo.github.io/">About</a>
+          <a class="active" href="https://jrjessyluo.github.io/publications/">Publications</a>
+          <a href="https://jrjessyluo.github.io/projects/">Projects</a>
+        </nav>
+        <div class="nav-divider"></div>
+        <div class="nav-social">
+          <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+          <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+    <header class="page-header">
+      <h1 class="page-title">Publications</h1>
+      <p class="page-desc">Full list of publications. * denotes equal contribution.</p>
+    </header>
+
+    <div class="card">
+
+      <!-- 2026 -->
+      <div class="year-group">
+        <div class="year-label">2026</div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-icde">ICDE 2026</div>
+          <div>
+            <div class="pub-title">Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering</div>
+            <div class="pub-authors"><strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, Shazia Sadiq</div>
+            <div class="pub-venue">IEEE International Conference on Data Engineering (ICDE), 2026</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-vldbj">VLDB J. 2026</div>
+          <div>
+            <div class="pub-title">Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach</div>
+            <div class="pub-authors"><strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, Xiaoli Wang</div>
+            <div class="pub-venue">The VLDB Journal, 2026</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-sigmod">SIGMOD 2026</div>
+          <div>
+            <div class="pub-title">AgenticScholar: Agentic Data Management with Pipeline Orchestration for Scholarly Corpora</div>
+            <div class="pub-authors">Hai Lan, Tingting Wang, Zhifeng Bao, Guoliang Li, Daomin Ji, Ge Lee, <strong>Feng Luo</strong>, Zi Huang, Hailang Qiu, Gang Hua</div>
+            <div class="pub-venue">ACM SIGMOD International Conference on Management of Data, 2026</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://arxiv.org/abs/2603.13774" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024 -->
+      <div class="year-group">
+        <div class="year-label">2024</div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-lrec">LREC 2024</div>
+          <div>
+            <div class="pub-title">MHGRL: An Effective Representation Learning Model for Electronic Health Records</div>
+            <div class="pub-authors">Feiyan Liu, Liangzhi Li, Xiaoli Wang, <strong>Feng Luo</strong>, Chang Liu, Jinsong Su, Yiming Qian</div>
+            <div class="pub-venue">Joint International Conference on Computational Linguistics, Language Resources and Evaluation (LREC-COLING), 2024</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://aclanthology.org/2024.lrec-main.985/" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2023 -->
+      <div class="year-group">
+        <div class="year-label">2023</div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-other">DSE 2023</div>
+          <div>
+            <div class="pub-title">A One-Size-Fits-Three Representation Learning Framework for Patient Similarity Search</div>
+            <div class="pub-authors">Yefan Huang, <strong>Feng Luo</strong>, Xiaoli Wang, Di Zhu, Bohan Li, Bin Luo</div>
+            <div class="pub-venue">Data Science and Engineering, 2023</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://doi.org/10.1007/s41019-023-00216-9" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2021 -->
+      <div class="year-group">
+        <div class="year-label">2021</div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-tkde">TKDE 2021</div>
+          <div>
+            <div class="pub-title">How Context or Knowledge Can Benefit Healthcare Question Answering?</div>
+            <div class="pub-authors">Xiaoli Wang*, <strong>Feng Luo</strong>*, Qingfeng Wu, Zhifeng Bao</div>
+            <div class="pub-venue">IEEE Transactions on Knowledge and Data Engineering (TKDE), 2021</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://doi.org/10.1109/TKDE.2021.3090253" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="pub-item">
+          <div class="pub-badge badge-cikm">CIKM 2021</div>
+          <div>
+            <div class="pub-title">IMAS++: An Intelligent Medical Analysis System Enhanced with Deep Graph Neural Networks</div>
+            <div class="pub-authors"><strong>Feng Luo</strong>, Yue Zhang, Xiaoli Wang</div>
+            <div class="pub-venue">ACM International Conference on Information and Knowledge Management (CIKM), 2021</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://doi.org/10.1145/3459637.3481966" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2020 -->
+      <div class="year-group" style="margin-bottom:0;">
+        <div class="year-label">2020</div>
+
+        <div class="pub-item" style="border-bottom:none; padding-bottom:0;">
+          <div class="pub-badge badge-www">WWW 2020</div>
+          <div>
+            <div class="pub-title">HQADeepHelper: A Deep Learning System for Healthcare Question Answering</div>
+            <div class="pub-authors"><strong>Feng Luo</strong>, Xiaoli Wang, Qingfeng Wu, Jiayin Liang, Xueliang Qiu, Zhifeng Bao</div>
+            <div class="pub-venue">The Web Conference (WWW), 2020</div>
+            <div class="pub-links">
+              <a class="pub-link-btn" href="https://doi.org/10.1145/3366424.3383539" target="_blank" rel="noopener">Paper</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

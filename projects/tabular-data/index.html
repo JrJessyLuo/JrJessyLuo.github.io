@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AI for Tabular Data Discovery and Analytics | Feng Luo</title>
+  <meta name="author" content="Feng Luo">
+  <link rel="canonical" href="https://jrjessyluo.github.io/projects/tabular-data/">
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
+  <style>
+    :root {
+      --bg: #f7f9fc;
+      --card-bg: #ffffff;
+      --text: #1a1a2e;
+      --text-light: #6b7280;
+      --theme: #2563eb;
+      --theme-dark: #1d4ed8;
+      --divider: rgba(0,0,0,0.08);
+      --shadow: 0 1px 3px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; padding-top: 68px;
+      background: var(--bg); color: var(--text);
+      font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+    }
+    a { color: var(--theme); text-decoration: none; }
+    a:hover { text-decoration: underline; color: var(--theme-dark); }
+
+    /* Navbar */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 0 24px;
+      height: 68px; display: flex; justify-content: space-between; align-items: center;
+    }
+    .nav-brand { font-weight: 700; font-size: 1.05rem; color: var(--text); }
+    .nav-brand span { color: var(--theme); }
+    .nav-right { display: flex; align-items: center; gap: 28px; }
+    .nav-links { display: flex; align-items: center; gap: 24px; }
+    .nav-links a { color: var(--text-light); font-size: 0.95rem; font-weight: 500; }
+    .nav-links a:hover, .nav-links a.active { color: var(--theme); text-decoration: none; }
+    .nav-links a.active { font-weight: 600; }
+    .nav-social { display: flex; align-items: center; gap: 14px; }
+    .nav-social a { color: var(--text-light); font-size: 0.88rem; font-weight: 500; }
+    .nav-social a:hover { color: var(--theme); text-decoration: none; }
+    .nav-divider { width: 1px; height: 20px; background: var(--divider); }
+
+    /* Page layout */
+    .page { max-width: 1100px; margin: 0 auto; padding: 40px 24px 80px; }
+
+    .breadcrumb {
+      font-size: 0.88rem; color: var(--text-light); margin-bottom: 20px;
+    }
+    .breadcrumb a { color: var(--theme); }
+
+    .page-title {
+      margin: 0 0 20px; font-size: 2.2rem; font-weight: 700; letter-spacing: -0.02em;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      padding: 32px 36px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+      margin-bottom: 24px;
+    }
+
+    .project-overview {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: #374151;
+    }
+    .project-overview p { margin: 0; }
+
+    .section-title {
+      font-size: 1.35rem; font-weight: 700; margin: 0 0 20px;
+      color: var(--text);
+    }
+
+    /* ── Pipeline ── */
+    .pipeline-card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+      border: 1px solid rgba(0,0,0,0.04);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .pipeline-header {
+      padding: 18px 28px 0;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-light);
+    }
+    .pipeline-body {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 28px 20px;
+    }
+
+    /* Input column */
+    .input-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 130px;
+      max-width: 142px;
+    }
+    .col-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      color: var(--text-light);
+      text-align: center;
+      margin-bottom: 4px;
+    }
+    .input-box {
+      background: #eff6ff;
+      border: 1px solid #bfdbfe;
+      border-radius: 8px;
+      padding: 8px 10px;
+      text-align: center;
+    }
+    .input-box-title {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #1e40af;
+      margin-bottom: 3px;
+    }
+    .input-box-sub {
+      font-size: 0.7rem;
+      color: #3b82f6;
+      line-height: 1.4;
+    }
+
+    /* Arrow */
+    .flow-arrow {
+      color: #93c5fd;
+      font-size: 1.8rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    /* Stages */
+    .stages-container {
+      flex: 1;
+      border: 1.5px dashed #bfdbfe;
+      border-radius: 12px;
+      padding: 14px 10px;
+      background: #f8faff;
+      display: flex;
+      align-items: stretch;
+      min-width: 0;
+    }
+    .stage-card {
+      flex: 1;
+      text-align: center;
+      padding: 0 10px;
+      border-right: 1px solid #e0e9ff;
+      min-width: 0;
+    }
+    .stage-card:last-child { border-right: none; }
+    .stage-num-circle {
+      width: 26px; height: 26px;
+      background: var(--theme);
+      color: white;
+      border-radius: 50%;
+      font-size: 0.78rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+    }
+    .stage-icon {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 7px;
+    }
+    .stage-action {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 5px;
+    }
+    .stage-desc {
+      font-size: 0.71rem;
+      color: #6b7280;
+      line-height: 1.4;
+      margin-bottom: 7px;
+    }
+    .stage-badge {
+      display: inline-block;
+      font-size: 0.68rem;
+      color: var(--theme);
+      font-style: italic;
+      font-weight: 600;
+    }
+
+    /* Output column */
+    .output-col {
+      min-width: 140px;
+      max-width: 154px;
+    }
+    .output-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.77rem;
+      font-weight: 500;
+      color: #15803d;
+      margin-bottom: 7px;
+    }
+    .output-item:last-child { margin-bottom: 0; }
+
+    /* Objectives footer */
+    .objectives-bar {
+      background: #1e3a5f;
+      padding: 14px 28px;
+    }
+    .objectives-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: rgba(255,255,255,0.7);
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .objectives-chips {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .obj-chip {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    /* Publications */
+    .pub-item {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 20px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: start;
+    }
+    .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .pub-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+      text-align: center;
+      margin-top: 2px;
+    }
+    .badge-icde  { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+    .badge-vldbj { background: #eff6ff; color: #1d4ed8; border: 1px solid #bfdbfe; }
+
+    .pub-title { font-size: 1rem; font-weight: 600; margin-bottom: 5px; color: var(--text); line-height: 1.5; }
+    .pub-authors { font-size: 0.93rem; color: #4b5563; line-height: 1.6; }
+    .pub-venue { font-size: 0.93rem; color: #6b7280; font-style: italic; margin-top: 4px; }
+    .pub-links { margin-top: 8px; display: flex; flex-wrap: wrap; gap: 8px; }
+    .pub-link-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.82rem; font-weight: 500; color: var(--theme);
+      padding: 3px 10px; border: 1px solid #bfdbfe;
+      border-radius: 5px; background: #eff6ff;
+    }
+    .pub-link-btn:hover { background: #dbeafe; text-decoration: none; }
+
+    @media (max-width: 768px) {
+      .nav-social { display: none; }
+      .page { padding: 32px 16px 60px; }
+      .card { padding: 24px 18px; }
+      .pipeline-body { flex-wrap: wrap; justify-content: center; }
+      .stages-container { flex-wrap: wrap; }
+      .stage-card { border-right: none; border-bottom: 1px solid #e0e9ff; padding: 10px 0; }
+      .pub-item { grid-template-columns: 1fr; gap: 8px; }
+      .page-title { font-size: 1.8rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">Feng <span>Luo</span></div>
+      <div class="nav-right">
+        <nav class="nav-links">
+          <a href="https://jrjessyluo.github.io/">About</a>
+          <a href="https://jrjessyluo.github.io/publications/">Publications</a>
+          <a class="active" href="https://jrjessyluo.github.io/projects/">Projects</a>
+        </nav>
+        <div class="nav-divider"></div>
+        <div class="nav-social">
+          <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+          <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Scholar</a>
+          <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div class="breadcrumb">
+      <a href="https://jrjessyluo.github.io/projects/">Projects</a> &rsaquo; AI for Tabular Data Discovery and Analytics
+    </div>
+
+    <h1 class="page-title">AI for Tabular Data Discovery and Analytics</h1>
+
+    <!-- Overview -->
+    <div class="card">
+      <div class="project-overview">
+        <p>
+          Develops intelligent methods for discovering, completing, and querying tabular data across large-scale data lakes.
+          This line of work covers <strong>tabular data discovery</strong>, <strong>missing value imputation</strong>,
+          and <strong>numerical table question answering</strong>, enabling machines to locate relevant tables from heterogeneous
+          data sources, recover incomplete data using hybrid structural and semantic signals, and answer complex numerical
+          questions over semi-structured and multi-table settings — all under practical cost and efficiency constraints.
+        </p>
+      </div>
+    </div>
+
+    <!-- Pipeline Diagram -->
+    <div class="pipeline-card">
+      <div class="pipeline-header">Research Pipeline</div>
+
+      <div class="pipeline-body">
+
+        <!-- Input -->
+        <div class="input-col">
+          <div class="col-title">Input Data</div>
+          <div class="input-box">
+            <div class="input-box-title">Tabular Data Lakes</div>
+            <div class="input-box-sub">Structured &amp; Semi-structured Tables</div>
+          </div>
+          <div class="input-box">
+            <div class="input-box-title">User Query &amp; Intent</div>
+            <div class="input-box-sub">Natural Language Questions</div>
+          </div>
+        </div>
+
+        <div class="flow-arrow">▶</div>
+
+        <!-- Stages -->
+        <div class="stages-container">
+
+          <div class="stage-card">
+            <div class="stage-num-circle">1</div>
+            <div class="stage-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <rect x="2" y="2" width="22" height="18" rx="2" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                <line x1="2" y1="8" x2="24" y2="8" stroke="#2563eb" stroke-width="1"/>
+                <line x1="2" y1="14" x2="24" y2="14" stroke="#2563eb" stroke-width="1"/>
+                <line x1="10" y1="2" x2="10" y2="20" stroke="#2563eb" stroke-width="1"/>
+                <line x1="17" y1="2" x2="17" y2="20" stroke="#2563eb" stroke-width="1"/>
+                <circle cx="31" cy="31" r="8" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+                <line x1="37" y1="37" x2="41" y2="41" stroke="#2563eb" stroke-width="2.5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="stage-action">Discover</div>
+            <div class="stage-desc">Retrieves relevant tables from data lakes via query decomposition</div>
+            <div class="stage-badge">ICDE'26</div>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-num-circle">2</div>
+            <div class="stage-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <rect x="2" y="2" width="26" height="22" rx="2" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                <line x1="2" y1="9" x2="28" y2="9" stroke="#2563eb" stroke-width="1"/>
+                <line x1="2" y1="16" x2="28" y2="16" stroke="#2563eb" stroke-width="1"/>
+                <line x1="10" y1="2" x2="10" y2="24" stroke="#2563eb" stroke-width="1"/>
+                <line x1="19" y1="2" x2="19" y2="24" stroke="#2563eb" stroke-width="1"/>
+                <rect x="19" y="9" width="9" height="7" fill="#2563eb" opacity="0.35"/>
+                <circle cx="34" cy="32" r="7" fill="#2563eb"/>
+                <line x1="30" y1="32" x2="38" y2="32" stroke="white" stroke-width="2"/>
+                <line x1="34" y1="28" x2="34" y2="36" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="stage-action">Complete</div>
+            <div class="stage-desc">Imputes missing values using hybrid structural &amp; semantic signals</div>
+            <div class="stage-badge">VLDBJ'26</div>
+          </div>
+
+          <div class="stage-card">
+            <div class="stage-num-circle">3</div>
+            <div class="stage-icon">
+              <svg width="42" height="42" viewBox="0 0 42 42" fill="none">
+                <rect x="1" y="1" width="26" height="22" rx="2" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                <rect x="1" y="1" width="26" height="7" rx="2" fill="#2563eb" opacity="0.25"/>
+                <line x1="1" y1="8" x2="27" y2="8" stroke="#2563eb" stroke-width="1"/>
+                <line x1="1" y1="15" x2="27" y2="15" stroke="#2563eb" stroke-width="1"/>
+                <line x1="10" y1="1" x2="10" y2="23" stroke="#2563eb" stroke-width="1"/>
+                <line x1="19" y1="1" x2="19" y2="23" stroke="#2563eb" stroke-width="1"/>
+                <rect x="28" y="26" width="13" height="10" rx="3" fill="#eff6ff" stroke="#2563eb" stroke-width="1.5"/>
+                <text x="31" y="34" font-family="serif" font-size="10" fill="#2563eb" font-weight="bold">?</text>
+                <rect x="1" y="29" width="13" height="10" rx="3" fill="#2563eb"/>
+                <text x="4" y="37" font-size="7" fill="white" font-weight="bold">ans</text>
+                <line x1="14" y1="34" x2="27" y2="34" stroke="#2563eb" stroke-width="1.5" stroke-dasharray="2 2"/>
+              </svg>
+            </div>
+            <div class="stage-action">Reason</div>
+            <div class="stage-desc">Understands semi-structured table and supports numerical reasoning</div>
+            <div class="stage-badge">Under Review</div>
+          </div>
+
+        </div>
+
+        <div class="flow-arrow">▶</div>
+
+        <!-- Output -->
+        <div class="output-col">
+          <div class="col-title">Downstream Applications</div>
+          <div class="output-item">📊 Business Intelligence</div>
+          <div class="output-item">❓ Table Question Answering</div>
+          <div class="output-item">💡 Analytical Reasoning</div>
+        </div>
+
+      </div>
+
+      <!-- Objectives footer -->
+      <div class="objectives-bar">
+        <div class="objectives-label">Central Design Objectives</div>
+        <div class="objectives-chips">
+          <div class="obj-chip">💰 Monetary Cost</div>
+          <div class="obj-chip">🎯 Answer Accuracy</div>
+          <div class="obj-chip">📋 Data Completeness</div>
+          <div class="obj-chip">🛡️ Budget Constraint</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Publications -->
+    <div class="card">
+      <h2 class="section-title">Related Publications</h2>
+
+      <div class="pub-item">
+        <div class="pub-badge badge-icde">ICDE 2026</div>
+        <div>
+          <div class="pub-title">Decomposition-Driven Multi-Table Retrieval and Reasoning for Numerical Question Answering</div>
+          <div class="pub-authors"><strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, Xiaoli Wang, J. Shane Culpepper, Shazia Sadiq</div>
+          <div class="pub-venue">IEEE International Conference on Data Engineering (ICDE), 2026</div>
+          <div class="pub-links">
+            <a class="pub-link-btn" href="https://arxiv.org/abs/2603.07950" target="_blank" rel="noopener">Paper</a>
+            <a class="pub-link-btn" href="https://jrjessyluo.github.io/Multi-Table Retrieval.pptx" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge badge-vldbj">VLDB J. 2026</div>
+        <div>
+          <div class="pub-title">Missing Value Imputation in Tabular Data Lakes Unleashed: A Hybrid Approach</div>
+          <div class="pub-authors"><strong>Feng Luo</strong>, Hai Lan, Hui Luo, Zhifeng Bao, J. Shane Culpepper, Shazia Sadiq, Xiaoli Wang</div>
+          <div class="pub-venue">The VLDB Journal, 2026</div>
+          <div class="pub-links">
+            <a class="pub-link-btn" href="https://link.springer.com/article/10.1007/s00778-025-00957-1" target="_blank" rel="noopener">Paper</a>
+            <a class="pub-link-btn" href="https://jrjessyluo.github.io/Missing value imputation.pptx" target="_blank" rel="noopener">Slides</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

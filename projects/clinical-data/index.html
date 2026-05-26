@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>AI for Clinical Data Intelligence | Feng Luo</title>
+  <meta name="author" content="Feng Luo">
+  <link rel="canonical" href="https://jrjessyluo.github.io/projects/clinical-data/">
+  <link rel="shortcut icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='90'&gt;🎓&lt;/text&gt;&lt;/svg&gt;">
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #000000;
+      --text-light: #6f6f6f;
+      --theme: #2698ba;
+      --divider: rgba(0, 0, 0, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      padding-top: 72px;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.65;
+    }
+
+    a { color: var(--theme); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--divider);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .social { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .social a { color: var(--text); font-size: 0.95rem; font-weight: 500; }
+    .social a:hover { color: var(--theme); text-decoration: none; }
+
+    .nav-links { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .nav-links a { color: var(--text); font-size: 0.98rem; }
+    .nav-links a.active { color: var(--theme); font-weight: 600; }
+
+    .page {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .breadcrumb {
+      font-size: 0.92rem;
+      color: var(--text-light);
+      margin-bottom: 24px;
+    }
+
+    .breadcrumb a { color: var(--theme); }
+
+    .page-title {
+      margin: 0 0 16px 0;
+      font-size: 2.2rem;
+      font-weight: 700;
+      line-height: 1.25;
+    }
+
+    .project-overview {
+      font-size: 1.08rem;
+      line-height: 1.85;
+      color: #333;
+      margin-bottom: 40px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin: 0 0 20px 0;
+    }
+
+    /* Pipeline diagram */
+    .pipeline-wrapper {
+      margin: 32px 0 40px;
+      border: 1.5px solid #c8e6f5;
+      border-radius: 14px;
+      padding: 28px 24px 20px;
+      background: #f5fbfe;
+    }
+
+    .pipeline-header {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1a6a8a;
+      text-align: center;
+      letter-spacing: 0.02em;
+      margin-bottom: 22px;
+    }
+
+    .pipeline-flow {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .col-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #1a6a8a;
+      text-align: center;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .pipeline-input-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 110px;
+    }
+
+    .input-box {
+      background: #ddeef7;
+      border: 1px solid #a8d4ea;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      color: #1a5a78;
+      line-height: 1.3;
+    }
+
+    .flow-arrow {
+      color: #2698ba;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .stages-row {
+      display: flex;
+      align-items: stretch;
+      gap: 6px;
+      flex: 1;
+    }
+
+    .stage-connector {
+      display: flex;
+      align-items: center;
+      color: #2698ba;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .stage-box {
+      background: #ffffff;
+      border: 1.5px solid #2698ba;
+      border-radius: 10px;
+      padding: 12px 10px 10px;
+      text-align: center;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .stage-num {
+      width: 22px;
+      height: 22px;
+      background: #2698ba;
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 7px;
+    }
+
+    .stage-name {
+      font-weight: 700;
+      font-size: 0.88rem;
+      color: #155f7a;
+      margin-bottom: 5px;
+    }
+
+    .stage-desc {
+      font-size: 0.75rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    .stage-paper {
+      margin-top: 7px;
+      font-size: 0.7rem;
+      color: #2698ba;
+      font-weight: 500;
+      font-style: italic;
+    }
+
+    .pipeline-output-col {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-width: 110px;
+    }
+
+    .output-box {
+      background: #d4eecc;
+      border: 1px solid #9dd191;
+      border-radius: 8px;
+      padding: 7px 10px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      text-align: center;
+      color: #2a5e20;
+      line-height: 1.3;
+    }
+
+    .objectives-row {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .obj-chip {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      background: #1a6a8a;
+      color: white;
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .obj-icon { font-size: 0.95rem; }
+
+    @media (max-width: 768px) {
+      .pipeline-flow { flex-direction: column; align-items: stretch; }
+      .stages-row { flex-direction: column; }
+      .flow-arrow { text-align: center; }
+      .stage-connector { justify-content: center; }
+      .pipeline-input-col, .pipeline-output-col { flex-direction: row; flex-wrap: wrap; }
+    }
+
+    .pub-list { margin-top: 4px; }
+
+    .pub-item {
+      display: grid;
+      grid-template-columns: 110px 1fr;
+      gap: 24px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--divider);
+      align-items: start;
+    }
+
+    .pub-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .pub-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border: 1px solid #d9d9d9;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: #555;
+      white-space: nowrap;
+      text-align: center;
+      background: #fff;
+    }
+
+    .pub-title { font-size: 1.08rem; font-weight: 600; margin-bottom: 6px; }
+    .pub-authors { font-size: 0.98rem; color: #444; }
+    .pub-venue { font-size: 0.98rem; color: #666; font-style: italic; margin-top: 6px; }
+
+    .pub-links { margin-top: 10px; }
+    .pub-links a { display: inline-block; margin-right: 14px; font-size: 0.96rem; }
+
+    @media (max-width: 768px) {
+      .nav-inner { flex-direction: column; align-items: flex-start; }
+      .page-title { font-size: 1.7rem; }
+      .pub-item { grid-template-columns: 1fr; gap: 12px; }
+      .pub-badge { width: fit-content; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="social">
+        <a href="mailto:feng.luo@student.rmit.edu.au">Email</a>
+        <a href="https://scholar.google.com/citations?user=OH8VnF8AAAAJ" target="_blank" rel="noopener">Google Scholar</a>
+        <a href="https://github.com/JrJessyLuo" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <div class="nav-links">
+        <a href="https://jrjessyluo.github.io/">About</a>
+        <a href="https://jrjessyluo.github.io/publications/">Publications</a>
+        <a class="active" href="https://jrjessyluo.github.io/projects/">Projects</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="page">
+
+    <div class="breadcrumb">
+      <a href="https://jrjessyluo.github.io/projects/">Projects</a> &rsaquo; AI for Clinical Data Intelligence
+    </div>
+
+    <h1 class="page-title">AI for Clinical Data Intelligence</h1>
+
+    <div class="project-overview">
+      <p>
+        Builds intelligent systems for understanding and analysing heterogeneous clinical data.
+        It spans <strong>medical question answering</strong>, <strong>clinical representation learning</strong>,
+        <strong>patient similarity search</strong>, and <strong>electronic health record analysis</strong>,
+        transforming complex clinical data into actionable insights to support more accurate and efficient
+        healthcare decision-making.
+      </p>
+    </div>
+
+    <!-- Pipeline Diagram -->
+    <div class="pipeline-wrapper">
+      <div class="pipeline-header">Pipeline Overview</div>
+
+      <div class="pipeline-flow">
+
+        <!-- Input -->
+        <div class="pipeline-input-col">
+          <div class="col-label">Input Data</div>
+          <div class="input-box">Electronic Health Records</div>
+          <div class="input-box">Medical Knowledge Bases</div>
+          <div class="input-box">Clinical Notes &amp; Reports</div>
+          <div class="input-box">Patient Queries</div>
+        </div>
+
+        <div class="flow-arrow">›</div>
+
+        <!-- Stages -->
+        <div class="stages-row">
+
+          <div class="stage-box">
+            <div class="stage-num">1</div>
+            <div class="stage-name">Encode</div>
+            <div class="stage-desc">Learn multi-view representations from heterogeneous clinical records</div>
+            <div class="stage-paper">LREC'24</div>
+          </div>
+
+          <div class="stage-connector">›</div>
+
+          <div class="stage-box">
+            <div class="stage-num">2</div>
+            <div class="stage-name">Retrieve</div>
+            <div class="stage-desc">Search for similar patients using a unified representation framework</div>
+            <div class="stage-paper">DSE'23</div>
+          </div>
+
+          <div class="stage-connector">›</div>
+
+          <div class="stage-box">
+            <div class="stage-num">3</div>
+            <div class="stage-name">Analyse</div>
+            <div class="stage-desc">Extract clinical patterns via deep graph neural network reasoning</div>
+            <div class="stage-paper">CIKM'21</div>
+          </div>
+
+          <div class="stage-connector">›</div>
+
+          <div class="stage-box">
+            <div class="stage-num">4</div>
+            <div class="stage-name">Enrich</div>
+            <div class="stage-desc">Incorporate contextual knowledge to enhance medical understanding</div>
+            <div class="stage-paper">TKDE'21</div>
+          </div>
+
+          <div class="stage-connector">›</div>
+
+          <div class="stage-box">
+            <div class="stage-num">5</div>
+            <div class="stage-name">Answer</div>
+            <div class="stage-desc">Generate accurate responses to clinical questions via deep learning</div>
+            <div class="stage-paper">WWW'20</div>
+          </div>
+
+        </div>
+
+        <div class="flow-arrow">›</div>
+
+        <!-- Output -->
+        <div class="pipeline-output-col">
+          <div class="col-label">Downstream Applications</div>
+          <div class="output-box">Clinical Decision Support</div>
+          <div class="output-box">Patient Risk Stratification</div>
+          <div class="output-box">Medical Question Answering</div>
+          <div class="output-box">Disease Diagnosis Support</div>
+        </div>
+
+      </div>
+
+      <!-- Objectives -->
+      <div class="objectives-row">
+        <div class="obj-chip"><span class="obj-icon">🎯</span> Prediction Accuracy</div>
+        <div class="obj-chip"><span class="obj-icon">🔍</span> Interpretability</div>
+        <div class="obj-chip"><span class="obj-icon">🏥</span> Clinical Relevance</div>
+        <div class="obj-chip"><span class="obj-icon">📈</span> Scalability</div>
+      </div>
+    </div>
+
+    <h2 class="section-title">Related Publications</h2>
+
+    <section class="pub-list">
+
+      <div class="pub-item">
+        <div class="pub-badge">LREC'24</div>
+        <div>
+          <div class="pub-title">MHGRL: An Effective Representation Learning Model for Electronic Health Records</div>
+          <div class="pub-authors">
+            Feiyan Liu, Liangzhi Li, Xiaoli Wang, <strong>Feng Luo</strong>, Chang Liu, Jinsong Su, and Yiming Qian
+          </div>
+          <div class="pub-venue">LREC-COLING, 2024</div>
+          <div class="pub-links">
+            <a href="https://aclanthology.org/2024.lrec-main.985/" target="_blank" rel="noopener">Paper</a>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">DSE'23</div>
+        <div>
+          <div class="pub-title">A One-Size-Fits-Three Representation Learning Framework for Patient Similarity Search</div>
+          <div class="pub-authors">
+            Yefan Huang, <strong>Feng Luo</strong>, Xiaoli Wang, Di Zhu, Bohan Li, and Bin Luo
+          </div>
+          <div class="pub-venue">Data Science and Engineering, 2023</div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1007/s41019-023-00216-9" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">CIKM'21</div>
+        <div>
+          <div class="pub-title">IMAS++: An Intelligent Medical Analysis System Enhanced with Deep Graph Neural Networks</div>
+          <div class="pub-authors">
+            <strong>Feng Luo</strong>, Yue Zhang, and Xiaoli Wang
+          </div>
+          <div class="pub-venue">CIKM, 2021</div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1145/3459637.3481966" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">TKDE'21</div>
+        <div>
+          <div class="pub-title">How Context or Knowledge Can Benefit Healthcare Question Answering?</div>
+          <div class="pub-authors">
+            Xiaoli Wang*, <strong>Feng Luo</strong>*, Qingfeng Wu, and Zhifeng Bao
+          </div>
+          <div class="pub-venue">IEEE Transactions on Knowledge and Data Engineering, 2021</div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1109/TKDE.2021.3090253" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pub-item">
+        <div class="pub-badge">WWW'20</div>
+        <div>
+          <div class="pub-title">HqaDeepHelper: A Deep Learning System for Healthcare Question Answering</div>
+          <div class="pub-authors">
+            <strong>Feng Luo</strong>, Xiaoli Wang, Qingfeng Wu, Jiayin Liang, Xueliang Qiu, and Zhifeng Bao
+          </div>
+          <div class="pub-venue">The Web Conference (WWW), 2020</div>
+          <div class="pub-links">
+            <a href="https://doi.org/10.1145/3366424.3383539" target="_blank" rel="noopener">Paper</a>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+</body>
+</html>
